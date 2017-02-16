@@ -1,9 +1,9 @@
 {
-  "name": "angular-gulp-setup",
-  "description": "A example stack with gulp and angular",
+  "name": "Project 4 - client side app",
+  "description": "ngular front end to go work with the Rails backend",
   "main": "index.js",
   "authors": [
-    "alexpchin <alex@alexchin.co.uk>"
+    "Davinder Kaur <miss.davinder.kaur@gmail.com>"
   ],
   "license": "ISC",
   "homepage": "",

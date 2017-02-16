@@ -1,12 +1,12 @@
 {
-  "name": "angular-gulp-setup",
+  "name": "Project 4 - client side app",
   "version": "1.0.0",
-  "description": "A example stack with gulp and angular",
+  "description": "Angular front end to go work with the Rails backend",
   "main": "index.js",
   "scripts": {
     "postinstall": "bower install && gulp deploy"
   },
-  "author": "Alex Chin <alex@alexchin.co.uk>",
+  "author": "Davinder Kaur <miss.davinder.kaur@gmail.com>",
   "license": "ISC",
   "gulp": {
     "srcDir": "src/",
@@ -50,7 +50,8 @@
     }
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "forever": "^0.15.3"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
