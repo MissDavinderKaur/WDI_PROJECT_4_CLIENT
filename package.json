@@ -1,5 +1,5 @@
 {
-  "name": "Project 4 - client side app",
+  "name": "Project4-clientsideapp",
   "version": "1.0.0",
   "description": "Angular front end to go work with the Rails backend",
   "main": "index.js",
@@ -85,5 +85,8 @@
     "jshint-stylish": "^2.2.1",
     "main-bower-files": "^2.13.1",
     "require-dir": "^0.3.1"
+  },
+  "engines" : {
+    "node": "6.4.0"
   }
 }
