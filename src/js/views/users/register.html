@@ -1,0 +1,28 @@
+{{ usersNew.user }}
+
+<div class="row top">
+  <div class="col s12 m8 offset-m2">
+    <form class="col s12" ng-submit="usersNew.userCreate()">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate" ng-model="usersNew.user.email">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <input id="password" type="password" class="validate" ng-model="usersNew.user.password">
+          <label for="password">Password</label>
+        </div>
+        <div class="input-field col s12 m6">
+          <input id="password_confirmation" type="password" class="validate" ng-model="usersNew.user.password_confirmation">
+          <label for="password_confirmation">Password Confirmation</label>
+        </div>
+      </div>
+      <div class="row">
+        <input type="submit" class="waves-effect waves-light btn col s12" value="Register">
+      </div>
+    </div>
+  </form>
+</div>
+</div>
