@@ -12,7 +12,7 @@ function userRouter($locationProvider, $stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('home', {
     url: '/',
-    template: '<h2> HOme </h2>'
+    template: '<h2> Home </h2>'
   })
   .state('usersRegister', {
     url: '/register',
