@@ -1,26 +1,47 @@
-<div class="row top">
-  <div class="col s12 m8 offset-m2">
-    <form class="col s12" ng-submit="usersNew.userCreate()">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate" ng-model="usersNew.user.email">
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12 m6">
-          <input id="password" type="password" class="validate" ng-model="usersNew.user.password">
-          <label for="password">Password</label>
-        </div>
-        <div class="input-field col s12 m6">
-          <input id="password_confirmation" type="password" class="validate" ng-model="usersNew.user.password_confirmation">
-          <label for="password_confirmation">Password Confirmation</label>
-        </div>
-      </div>
-      <div class="row">
-        <input type="submit" class="waves-effect waves-light btn col s12" value="Register">
-      </div>
+<form class="pure-form pure-form-aligned" ng-submit="usersNew.userCreate()">
+  <fieldset>
+    <div class="pure-control-group">
+      <label for="alias">Alias</label>
+      <input id="alias" type="text" placeholder="Alias" ng-model="usersNew.user.alias">
+      <span class="pure-form-message-inline">This is a required field.</span>
     </div>
-  </form>
-</div>
-</div>
+
+    <div class="pure-control-group">
+      <label for="email">Email</label>
+      <input id="email" type="text" placeholder="Email" ng-model="usersNew.user.email">
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="password">Password</label>
+      <input id="password" type="text" placeholder="Password" ng-model="usersNew.user.password">
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="password_confirmation">Password Confirmation</label>
+      <input id="password_confirmation" type="text" placeholder="Password" ng-model="usersNew.user.password_confirmation">
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="city">City</label>
+      <input id="city" type="text" placeholder="City" ng-model="usersNew.user.city">
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="sector">Sector</label>
+      <input id="sector" type="text" placeholder="Sector" ng-model="usersNew.user.sector">
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+
+    <div class="pure-controls">
+      <label for="cb" class="pure-checkbox">
+        <input id="cb" type="checkbox"> I've read the terms and conditions
+      </label>
+
+      <button type="submit" class="pure-button pure-button-primary">Submit</button>
+    </div>
+  </fieldset>
+</form>
