@@ -12,7 +12,8 @@ function userRouter($locationProvider, $stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('home', {
     url: '/',
-    template: '<h2> Home </h2>'
+    templateUrl: '/js/views/home.html',
+    controller: 'HomeCtrl as home'
   })
   .state('usersRegister', {
     url: '/register',
@@ -28,6 +29,11 @@ function userRouter($locationProvider, $stateProvider, $urlRouterProvider) {
     url: '/users/:id',
     templateUrl: '/js/views/users/show.html',
     controller: 'usersShowCtrl as usersShow'
+  })
+  .state('usersEdit', {
+    url: '/users/:id/edit',
+    templateUrl: '/js/views/users/edit.html',
+    controller: 'usersEditCtrl as usersEdit'
   });
   //if none of the above names found then redirect to '/'
   $urlRouterProvider.otherwise('/');
