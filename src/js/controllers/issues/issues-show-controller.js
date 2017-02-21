@@ -2,9 +2,11 @@ angular
 .module('letsTalk')
 .controller('issuesShowCtrl', IssuesShowCtrl);
 
-IssuesShowCtrl.$inject = ['$stateParams', 'Issue'];
-function IssuesShowCtrl($stateParams, Issue) {
+IssuesShowCtrl.$inject = ['$stateParams', 'Issue', 'CurrentUserService', 'Message', '$state'];
+function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state ) {
   const vm = this;
+
+  vm.currentUser = CurrentUserService.currentUser;
 
   Issue
   .get({id: $stateParams.id})
@@ -14,7 +16,28 @@ function IssuesShowCtrl($stateParams, Issue) {
   });
 
   vm.AddMessage = function(issueId) {
-    console.log('clicked AddMessage button for', issueId);
+    vm.message.issue_id = issueId;
+    vm.message.sender_id = vm.currentUser.id;
+    vm.message.receiver_id = vm.issue.user.id;
+
+    console.log('MESSAGE OBJECT TO BE SAVED', vm.message);
+    Message
+    .save(vm.message)
+    .$promise
+    .then((response) => {
+      vm.message = null;
+      console.log('MESSAGE OBJECT HAS BEEN SAVEd and this is the response', response);
+      Issue
+      .get({id: response.issue_id})
+      .$promise
+      .then(response => {
+        console.log('GETTING THE ISSUE OBJECT AGAIN WITH ALL OF THE NEW MESSAGES', response);
+        vm.issue = response;
+        $state.go('issuesShow', {id: vm.issue.id});
+      });
+    }, err => {
+      console.log(err);
+    });
   };
 
   vm.EditMessage = function(messageID) {

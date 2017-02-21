@@ -11,4 +11,9 @@
   </li>
 </ul>
 
-<button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.AddMessage(issuesShow.issue.id)">Add</button>
+<div class="pure-control-group">
+  {{ issuesShow.message }}
+  <label for="new_message">Add new message</label>
+  <input id="new_message" type="text" placeholder="New Message" ng-model="issuesShow.message.msg_text">
+  <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.AddMessage(issuesShow.issue.id)">Add</button>
+</div>
