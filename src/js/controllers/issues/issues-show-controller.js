@@ -20,18 +20,15 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
     vm.message.sender_id = vm.currentUser.id;
     vm.message.receiver_id = vm.issue.user.id;
 
-    console.log('MESSAGE OBJECT TO BE SAVED', vm.message);
     Message
     .save(vm.message)
     .$promise
     .then((response) => {
       vm.message = null;
-      console.log('MESSAGE OBJECT HAS BEEN SAVEd and this is the response', response);
       Issue
       .get({id: response.issue_id})
       .$promise
       .then(response => {
-        console.log('GETTING THE ISSUE OBJECT AGAIN WITH ALL OF THE NEW MESSAGES', response);
         vm.issue = response;
         $state.go('issuesShow', {id: vm.issue.id});
       });
@@ -46,6 +43,21 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
 
   vm.DeleteMessage = function(messageID) {
     console.log('clicked Delete Message button for', messageID);
+
+    Message
+    .delete({id: messageID})
+    .$promise
+    .then(() => {
+      Issue
+      .get({id: vm.issue.id})
+      .$promise
+      .then(response => {
+        vm.issue = response;
+      });
+    }, err => {
+      console.log(err);
+    });
+
   };
 
 }

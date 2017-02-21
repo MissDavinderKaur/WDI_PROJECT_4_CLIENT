@@ -7,6 +7,7 @@
 <ul>
   <li ng-repeat="message in issuesShow.issue.messages"> {{ message.msg_text}}
     <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.EditMessage(message.id)">Edit</button>
+    
     <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.DeleteMessage(message.id)">Delete</button>
   </li>
 </ul>
