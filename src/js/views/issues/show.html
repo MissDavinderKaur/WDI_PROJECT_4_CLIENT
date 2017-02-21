@@ -1,5 +1,7 @@
 <h4>Issue show page </h4>
 
+{{ issuesShow }}
+
 <h2>Issue</h2>
 {{issuesShow.issue.title}}
 
@@ -20,5 +22,5 @@
   {{ issuesShow.message }}
   <label for="new_message">Add new message</label>
   <input id="new_message" type="text" placeholder="New Message" ng-model="issuesShow.newMessage.msg_text">
-  <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.AddMessage(issuesShow.issue.id)">Add</button>
+  <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.AddMessage()">Add</button>
 </div>

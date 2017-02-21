@@ -7,6 +7,7 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
   const vm = this;
 
   vm.currentUser = CurrentUserService.currentUser;
+  vm.newMessage;
 
   Issue
   .get({id: $stateParams.id})
@@ -19,8 +20,8 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
     vm.issue = vm.temp;
   });
 
-  vm.AddMessage = function(issueId) {
-    vm.newMessage.issue_id = issueId;
+  vm.AddMessage = function() {
+    vm.newMessage.issue_id = vm.issue.id;
     vm.newMessage.sender_id = vm.currentUser.id;
     vm.newMessage.receiver_id = vm.issue.user.id;
 
