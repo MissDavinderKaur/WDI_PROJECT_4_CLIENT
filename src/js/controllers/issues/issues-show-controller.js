@@ -2,8 +2,8 @@ angular
 .module('letsTalk')
 .controller('issuesShowCtrl', IssuesShowCtrl);
 
-IssuesShowCtrl.$inject = ['$stateParams', 'Issue', 'CurrentUserService', 'Message', '$state'];
-function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state ) {
+IssuesShowCtrl.$inject = ['$stateParams', 'Issue', 'CurrentUserService', 'Message', '$state', '$scope'];
+function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state, $scope ) {
   const vm = this;
 
   vm.currentUser = CurrentUserService.currentUser;
@@ -16,15 +16,15 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
   });
 
   vm.AddMessage = function(issueId) {
-    vm.message.issue_id = issueId;
-    vm.message.sender_id = vm.currentUser.id;
-    vm.message.receiver_id = vm.issue.user.id;
+    vm.newMessage.issue_id = issueId;
+    vm.newMessage.sender_id = vm.currentUser.id;
+    vm.newMessage.receiver_id = vm.issue.user.id;
 
     Message
-    .save(vm.message)
+    .save(vm.newMessage)
     .$promise
     .then((response) => {
-      vm.message = null;
+      vm.newMessage.msg_text = null;
       Issue
       .get({id: response.issue_id})
       .$promise
@@ -37,13 +37,29 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
     });
   };
 
-  vm.EditMessage = function(messageID) {
-    console.log('clicked EditMessage button for', messageID);
+  vm.ShowEditField = function() {
+    vm.editing ^= true;
+  };
+
+  vm.EditMessage = function(index, messageID) {
+    vm.updatedMessage = vm.issue.messages[index];
+
+    Message
+    .update({id: messageID}, vm.updatedMessage)
+    .$promise
+    .then((response) => {
+      Issue
+      .get({id: response.issue_id})
+      .$promise
+      .then(response => {
+        vm.issue = response;
+      });
+    }, err => {
+      console.log(err);
+    });
   };
 
   vm.DeleteMessage = function(messageID) {
-    console.log('clicked Delete Message button for', messageID);
-
     Message
     .delete({id: messageID})
     .$promise
@@ -57,7 +73,6 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
     }, err => {
       console.log(err);
     });
-
   };
 
 }

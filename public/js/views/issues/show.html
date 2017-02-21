@@ -1,13 +1,19 @@
 <h4>Issue show page </h4>
 
+{{issuesShow.issue.messages}}
+
 <h2>Issue</h2>
 {{issuesShow.issue}}
 
 <h2>Messages</h2>
 <ul>
-  <li ng-repeat="message in issuesShow.issue.messages"> {{ message.msg_text}}
-    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.EditMessage(message.id)">Edit</button>
-    
+  <li ng-repeat="message in issuesShow.issue.messages track by $index"> {{ message.msg_text}}
+    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.ShowEditField()">Edit</button>
+
+    <input id="update_message" type="text" ng-if="issuesShow.editing" placeholder="{{ message.msg_text}}" ng-model="message.msg_text">
+    <button type="submit" class="pure-button pure-button-primary" ng-if="issuesShow.editing" ng-click="issuesShow.EditMessage($index, message.id)">Update</button>
+
+
     <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.DeleteMessage(message.id)">Delete</button>
   </li>
 </ul>
@@ -15,6 +21,6 @@
 <div class="pure-control-group">
   {{ issuesShow.message }}
   <label for="new_message">Add new message</label>
-  <input id="new_message" type="text" placeholder="New Message" ng-model="issuesShow.message.msg_text">
+  <input id="new_message" type="text" placeholder="New Message" ng-model="issuesShow.newMessage.msg_text">
   <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.AddMessage(issuesShow.issue.id)">Add</button>
 </div>
