@@ -1,9 +1,15 @@
 <h3>SHOW PAGE</h3>
-{{main.user}}
 
-{{ main.user.alias }}
+<h3>Alias {{ main.user.alias }} </h3>
+<h3>Sector {{ main.user.sector }} </h3>
+<h3>City {{ main.user.city }} </h3>
 
-{{ main.user.issues }}
+Issues
+<li ng-repeat="issue in main.user.issues track by $index"> <a ui-sref="issuesShow({id: issue.id})"> {{ issue.title }} </a>
+<ul>
+  <li ng-repeat="message in issue.messages">{{message.msg_text}}</li>
+</ul>
+</li>
 
 
 <button class="pure-button" ui-sref="usersEdit({id: main.user.id})">Edit my details</button>

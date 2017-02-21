@@ -53,6 +53,7 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
       .$promise
       .then(response => {
         vm.issue = response;
+        vm.editing ^= true;
       });
     }, err => {
       console.log(err);
