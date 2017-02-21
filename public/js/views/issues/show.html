@@ -1,3 +1,14 @@
 <h4>Issue show page </h4>
 
+<h2>Issue</h2>
 {{issuesShow.issue}}
+
+<h2>Messages</h2>
+<ul>
+  <li ng-repeat="message in issuesShow.issue.messages"> {{ message.msg_text}}
+    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.EditMessage(message.id)">Edit</button>
+    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.DeleteMessage(message.id)">Delete</button>
+  </li>
+</ul>
+
+<button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.AddMessage(issuesShow.issue.id)">Add</button>
