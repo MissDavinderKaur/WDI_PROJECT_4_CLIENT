@@ -1,0 +1,15 @@
+<h3>ISSUE EDIT PAGE</h3>
+<form class="pure-form pure-form-aligned" ng-submit="issuesEdit.issuesUpdate()">
+  <fieldset>
+    <div class="pure-control-group">
+      <label for="city">Title</label>
+      <input id="city" type="text" placeholder="{{issuesEdit.issue.title}}" ng-model="issuesEdit.issue.title">
+    </div>
+
+    <div class="pure-control-group">
+      <label for="sector">Category</label>
+      <input id="sectory" type="text" placeholder="{{issuesEdit.issue.category}}" ng-model="issuesEdit.issue.category">
+    </div>
+    <button type="submit" class="pure-button pure-button-primary">Save Updates</button>
+  </fieldset>
+</form>

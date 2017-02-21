@@ -1,6 +1,6 @@
 angular
 .module('letsTalk')
-.controller('IssuesIndexCtrl', IssuesIndexCtrl);
+.controller('issuesIndexCtrl', IssuesIndexCtrl);
 
 IssuesIndexCtrl.$inject = ['Issue'];
 function IssuesIndexCtrl(Issue) {

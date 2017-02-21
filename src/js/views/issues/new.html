@@ -1,0 +1,22 @@
+<form class="pure-form pure-form-aligned" ng-submit="issuesNew.issueCreate()">
+  <fieldset>
+    <div class="pure-control-group">
+      <label for="title">Title</label>
+      <input id="title" type="text" placeholder="Title" ng-model="issuesNew.issue.title">
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="category">Category</label>
+      <input id="category" type="text" placeholder="Category" ng-model="issuesNew.issue.category">
+      <span class="pure-form-message-inline">This is a required field.</span>
+    </div>
+    <div class="pure-controls">
+      <label for="cb" class="pure-checkbox">
+        <input id="cb" type="checkbox"> I've read the terms and conditions
+      </label>
+
+      <button type="submit" class="pure-button pure-button-primary">Submit</button>
+    </div>
+  </fieldset>
+</form>

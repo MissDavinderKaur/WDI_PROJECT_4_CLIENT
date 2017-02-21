@@ -13,7 +13,22 @@ function issueRouter($locationProvider, $stateProvider, $urlRouterProvider) {
   .state('issuesIndex', {
     url: '/issues',
     templateUrl: '/js/views/issues/index.html',
-    controller: 'IssuesIndexCtrl as issuesIndex'
+    controller: 'issuesIndexCtrl as issuesIndex'
+  })
+  .state('issuesNew', {
+    url: '/issues/new',
+    templateUrl: '/js/views/issues/new.html',
+    controller: 'issuesNewCtrl as issuesNew'
+  })
+  .state('issuesShow', {
+    url: '/issues/:id',
+    templateUrl: '/js/views/issues/show.html',
+    controller: 'issuesShowCtrl as issuesShow'
+  })
+  .state('issuesEdit', {
+    url: '/issues/:id/edit',
+    templateUrl: '/js/views/issues/edit.html',
+    controller: 'issuesEditCtrl as issuesEdit'
   });
 
   //if none of the above names found then redirect to '/'

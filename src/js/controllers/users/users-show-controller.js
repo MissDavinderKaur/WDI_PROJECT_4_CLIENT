@@ -1,9 +1,9 @@
 angular
 .module('letsTalk')
-.controller('usersShowCtrl', usersShowCtrl);
+.controller('usersShowCtrl', UsersShowCtrl);
 
-usersShowCtrl.$inject = ['$stateParams', 'User', '$scope', 'CurrentUserService'];
-function usersShowCtrl($stateParams, User, $scope, CurrentUserService) {
+UsersShowCtrl.$inject = ['$stateParams', 'User', '$scope', 'CurrentUserService'];
+function UsersShowCtrl($stateParams, User, $scope, CurrentUserService) {
   const vm = this;
 
   //gets currentUSer using CurrentUserService

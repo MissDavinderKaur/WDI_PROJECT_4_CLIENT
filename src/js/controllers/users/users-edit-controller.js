@@ -1,10 +1,10 @@
 angular
   .module('letsTalk')
-  .controller('usersEditCtrl', usersEditCtrl);
+  .controller('usersEditCtrl', UsersEditCtrl);
 
-usersEditCtrl.$inject = ['$stateParams', '$state', '$http', 'User', 'CurrentUserService'];
+UsersEditCtrl.$inject = ['$stateParams', '$state', '$http', 'User', 'CurrentUserService'];
 
-function usersEditCtrl($stateParams, $state, $http, User, CurrentUserService) {
+function UsersEditCtrl($stateParams, $state, $http, User, CurrentUserService) {
   const vm = this;
 
   //uses CurrentFreelancerService to get freelancer info
