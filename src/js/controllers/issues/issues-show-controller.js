@@ -12,7 +12,11 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
   .get({id: $stateParams.id})
   .$promise
   .then(response => {
-    vm.issue = response;
+    vm.temp = response;
+    vm.temp.messages.sort(function(a, b){
+      return a.id-b.id;
+    });
+    vm.issue = vm.temp;
   });
 
   vm.AddMessage = function(issueId) {
@@ -29,7 +33,11 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
       .get({id: response.issue_id})
       .$promise
       .then(response => {
-        vm.issue = response;
+        vm.temp = response;
+        vm.temp.messages.sort(function(a, b){
+          return a.id-b.id;
+        });
+        vm.issue = vm.temp;
         $state.go('issuesShow', {id: vm.issue.id});
       });
     }, err => {
@@ -52,7 +60,11 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
       .get({id: response.issue_id})
       .$promise
       .then(response => {
-        vm.issue = response;
+        vm.temp = response;
+        vm.temp.messages.sort(function(a, b){
+          return a.id-b.id;
+        });
+        vm.issue = vm.temp;
         vm.editing ^= true;
       });
     }, err => {
