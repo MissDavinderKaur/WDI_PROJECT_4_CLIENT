@@ -2,8 +2,8 @@ angular
   .module('letsTalk')
   .controller('usersNewCtrl', UsersNewCtrl);
 
-UsersNewCtrl.$inject = ['User', 'CurrentUserService'];
-function UsersNewCtrl(User, CurrentUserService) {
+UsersNewCtrl.$inject = ['User', 'CurrentUserService', '$state'];
+function UsersNewCtrl(User, CurrentUserService,$state) {
   const vm = this;
 
   //uses User factory to post User object to database
@@ -11,12 +11,13 @@ function UsersNewCtrl(User, CurrentUserService) {
   //to uses returned token to make request to get all User's
   //info from database
   vm.userCreate = function() {
-    console.log('about to send the user to the db', vm.user);
     User
     .register(vm.user)
     .$promise
     .then(() => {
       CurrentUserService.getUser();
+      vm.user = CurrentUserService.currentUser;
+      $state.go('usersShow', {id: vm.user.id});
     }, err => {
       console.log(err);
     });

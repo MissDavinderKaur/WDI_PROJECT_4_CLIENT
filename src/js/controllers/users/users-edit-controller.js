@@ -13,11 +13,12 @@ function usersEditCtrl($stateParams, $state, $http, User, CurrentUserService) {
   //uses Freelancer factory (ajax shorthand) to update
   //freelancer on database
   vm.usersUpdate = function usersUpdate(){
+
     User
       .update({id: $stateParams.id}, vm.user)
       .$promise
       .then(resp => {
-        $state.go('userShow', {id: vm.user.id});
+        $state.go('usersShow', {id: vm.user.id});
       });
   };
 }

@@ -19,8 +19,8 @@ function UsersLoginCtrl(User, CurrentUserService, $state ){
       //can use CurrentUserService to decode token,
       //make request to User api and broadcast
       //'logged in' to rest of app.
-      vm.user = data.user;
       CurrentUserService.getUser();
+      vm.user = CurrentUserService.currentUser;
       $state.go('usersShow', {id: vm.user.id});
     }, err => {
       console.log(err);
