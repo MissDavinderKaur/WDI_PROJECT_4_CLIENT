@@ -1,7 +1,9 @@
 <h3>SHOW PAGE</h3>
-{{ usersShow.user.alias }}
+{{main.user}}
 
-{{ usersShow.user.issues }}
+{{ main.user.alias }}
+
+{{ main.user.issues }}
 
 
-<button class="pure-button" ui-sref="usersEdit({id: usersShow.user.id})">Edit my details</button>
+<button class="pure-button" ui-sref="usersEdit({id: main.user.id})">Edit my details</button>

@@ -8,7 +8,7 @@ function usersShowCtrl($stateParams, User, $scope, CurrentUserService) {
 
   //gets currentUSer using CurrentUserService
   if (CurrentUserService.currentUser) {
-    vm.currentUser = CurrentUserService.currentUser.user;
+    vm.currentUser = CurrentUserService.currentUser;
   }
 
   User

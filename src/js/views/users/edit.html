@@ -1,20 +1,14 @@
 <h3>EDIT PAGE</h3>
-{{ usersEdit.user }}
 <form class="pure-form pure-form-aligned" ng-submit="usersEdit.usersUpdate()">
   <fieldset>
     <div class="pure-control-group">
-      <label for="alias">Alias</label>
-      <input id="alias" type="text" placeholder="{{usersEdit.user.alias}}" ng-model="usersEdit.user.alias">
-    </div>
-
-    <div class="pure-control-group">
       <label for="city">City</label>
-      <input id="city" type="text" placeholder="{{usersEdit.user.city}}" ng-model="usersEdit.user.city">
+      <input id="city" type="text" placeholder="{{main.user.city}}" ng-model="usersEdit.user.city">
     </div>
 
     <div class="pure-control-group">
       <label for="sector">Sector</label>
-      <input id="sectory" type="text" placeholder="{{usersEdit.user.sector}}" ng-model="usersEdit.user.sector">
+      <input id="sectory" type="text" placeholder="{{main.user.sector}}" ng-model="usersEdit.user.sector">
     </div>
     <button type="submit" class="pure-button pure-button-primary">Submit</button>
   </fieldset>

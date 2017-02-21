@@ -21,7 +21,7 @@ function CurrentUserService(TokenService, User, $rootScope){
         .then(data => {
           //sets current User info onto self
           //stored so other controllers can retrieve
-          self.currentUser = data;
+          self.currentUser = data.user;
           //sends signal to rest of app that there is a logged in user
           $rootScope.$broadcast('loggedIn');
         });

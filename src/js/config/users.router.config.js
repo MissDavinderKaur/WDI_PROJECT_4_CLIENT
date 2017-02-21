@@ -12,8 +12,7 @@ function userRouter($locationProvider, $stateProvider, $urlRouterProvider) {
   $stateProvider
   .state('home', {
     url: '/',
-    templateUrl: '/js/views/home.html',
-    controller: 'HomeCtrl as home'
+    templateUrl: '/js/views/home.html'
   })
   .state('usersRegister', {
     url: '/register',

@@ -7,11 +7,8 @@ usersEditCtrl.$inject = ['$stateParams', '$state', '$http', 'User', 'CurrentUser
 function usersEditCtrl($stateParams, $state, $http, User, CurrentUserService) {
   const vm = this;
 
-  console.log('Current user at start of controller', vm.user);
-
   //uses CurrentFreelancerService to get freelancer info
-  console.log('CURRENT USER SERVICE', CurrentUserService);
-  vm.user = CurrentUserService.currentUser.user;
+  vm.user = CurrentUserService.currentUser;
 
   //uses Freelancer factory (ajax shorthand) to update
   //freelancer on database
