@@ -16,6 +16,7 @@ function UsersShowCtrl($stateParams, User, $scope, CurrentUserService) {
     .$promise
     .then(response => {
       vm.user = response.user;
+      console.log('THIS IS THE CURRENT USER', vm.user);
       // var temp = response.user;
       // temp.issues.forEach(function(issue){
       //   issue.messages.sort(function(a, b){

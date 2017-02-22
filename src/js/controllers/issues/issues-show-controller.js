@@ -6,12 +6,14 @@ IssuesShowCtrl.$inject = ['$stateParams', 'Issue', 'CurrentUserService', 'Messag
 
 function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state, ActionCableChannel, ActionCableSocketWrangler) {
   const vm = this;
+  vm.newMessage = {};
 
   const consumer = new ActionCableChannel('IssuesChannel', { id: $stateParams.id });
   vm.status = ActionCableSocketWrangler;
 
   vm.currentUser = CurrentUserService.currentUser;
-  vm.newMessage = {};
+
+  console.log('THE CURRENT USER IS', vm.currentUser);
 
   Issue
   .get({id: $stateParams.id})
@@ -50,6 +52,7 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
 
     Message
     .save(vm.newMessage).$promise.then((response) => {
+      vm.newMessage = {};
       console.log('LOGGING RESPONSE', response);
     });
   }
