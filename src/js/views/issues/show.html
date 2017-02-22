@@ -4,6 +4,7 @@
 {{issuesShow.issue.title}}
 
 <h2>Messages</h2>
+<p ng-if="issuesShow.issue.messages.length === 0"> No messages to show </p>
 <ul>
   <li ng-repeat="message in issuesShow.issue.messages | orderBy:'id'"> {{ message.msg_text}}
     <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.ShowEditField($index)">Edit</button>
