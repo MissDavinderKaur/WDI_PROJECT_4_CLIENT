@@ -15,16 +15,17 @@ function UsersShowCtrl($stateParams, User, $scope, CurrentUserService) {
     .get({id: $stateParams.id})
     .$promise
     .then(response => {
-      var temp = response.user;
-      temp.issues.forEach(function(issue){
-        issue.messages.sort(function(a, b){
-          return a.id-b.id;
-        });
-      });
-      temp.issues.sort(function(a, b){
-        return a.id-b.id;
-      });
-      vm.user = vm.temp;
+      vm.user = response.user;
+      // var temp = response.user;
+      // temp.issues.forEach(function(issue){
+      //   issue.messages.sort(function(a, b){
+      //     return a.id-b.id;
+      //   });
+      // });
+      // temp.issues.sort(function(a, b){
+      //   return a.id-b.id;
+      // });
+      // vm.user = vm.temp;
     });
 
 }

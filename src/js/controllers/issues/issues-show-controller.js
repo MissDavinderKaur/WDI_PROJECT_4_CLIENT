@@ -13,12 +13,11 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
   .get({id: $stateParams.id})
   .$promise
   .then(response => {
-    vm.issue = response;
-    // vm.temp = response;
-    // vm.temp.messages.sort(function(a, b){
-    //   return a.id-b.id;
-    // });
-    // vm.issue = vm.temp;
+    vm.temp = response;
+    vm.temp.messages.sort(function(a, b){
+      return a.id-b.id;
+    });
+    vm.issue = vm.temp;
   });
 
   vm.AddMessage = function() {
