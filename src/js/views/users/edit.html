@@ -3,12 +3,18 @@
   <fieldset>
     <div class="pure-control-group">
       <label for="city">City</label>
-      <input id="city" type="text" placeholder="{{main.user.city}}" ng-model="usersEdit.user.city">
+      <select name="city" ng-model="usersEdit.user.city" placeholder="{{main.user.city}}">
+        <option ng-repeat="city in usersEdit.citiesList" value="{{city}}"> {{city}}</option>
+      </select>
+      <span class="pure-form-message-inline">This is a required field.</span>
     </div>
 
     <div class="pure-control-group">
       <label for="sector">Sector</label>
-      <input id="sectory" type="text" placeholder="{{main.user.sector}}" ng-model="usersEdit.user.sector">
+      <select name="Sector" ng-model="usersEdit.user.sector" placeholder="{{main.user.sector}}">
+        <option ng-repeat="sector in usersEdit.sectorsList" value="{{sector}}">{{sector}}</option>
+      </select>
+      <span class="pure-form-message-inline">This is a required field.</span>
     </div>
     <button type="submit" class="pure-button pure-button-primary">Save Updates</button>
   </fieldset>

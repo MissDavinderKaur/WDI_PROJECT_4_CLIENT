@@ -26,13 +26,17 @@
 
     <div class="pure-control-group">
       <label for="city">City</label>
-      <input id="city" type="text" placeholder="City" ng-model="usersNew.user.city">
+      <select name="city" ng-model="usersNew.user.city">
+        <option ng-repeat="city in usersNew.citiesList" value="{{city}}"> {{city}}</option>
+      </select>
       <span class="pure-form-message-inline">This is a required field.</span>
     </div>
 
     <div class="pure-control-group">
       <label for="sector">Sector</label>
-      <input id="sector" type="text" placeholder="Sector" ng-model="usersNew.user.sector">
+      <select name="Sector" ng-model="usersNew.user.sector">
+        <option ng-repeat="sector in usersNew.sectorsList" value="{{sector}}">{{sector}}</option>
+      </select>
       <span class="pure-form-message-inline">This is a required field.</span>
     </div>
 

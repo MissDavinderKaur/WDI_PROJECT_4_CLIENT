@@ -2,9 +2,12 @@ angular
   .module('letsTalk')
   .controller('usersNewCtrl', UsersNewCtrl);
 
-UsersNewCtrl.$inject = ['User', 'CurrentUserService', '$state'];
-function UsersNewCtrl(User, CurrentUserService,$state) {
+UsersNewCtrl.$inject = ['User', 'CurrentUserService', '$state', 'citiesList', 'sectorsList'];
+function UsersNewCtrl(User, CurrentUserService, $state, citiesList, sectorsList) {
   const vm = this;
+
+  vm.citiesList = citiesList;
+  vm.sectorsList = sectorsList;
 
   //uses User factory to post User object to database
   //and register.  Then triggers CurrentUserService
@@ -15,7 +18,7 @@ function UsersNewCtrl(User, CurrentUserService,$state) {
     .register(vm.user)
     .$promise
     .then((response) => {
-      vm.user = response.user
+      vm.user = response.user;
       CurrentUserService.getUser();
       $state.go('usersShow', {id: vm.user.id});
     }, err => {
