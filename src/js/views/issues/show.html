@@ -6,10 +6,10 @@
 <h2>Messages</h2>
 <ul>
   <li ng-repeat="message in issuesShow.issue.messages track by $index"> {{ message.msg_text}}
-    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.ShowEditField()">Edit</button>
+    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.ShowEditField($index)">Edit</button>
 
-    <input id="update_message" type="text" ng-if="issuesShow.editing" placeholder="{{ message.msg_text}}" ng-model="message.msg_text">
-    <button type="submit" class="pure-button pure-button-primary" ng-if="issuesShow.editing" ng-click="issuesShow.EditMessage($index, message.id)">Update</button>
+    <input id="{{$index}}" type="text" ng-show="{{$index}} === issuesShow.editing" placeholder="{{ message.msg_text}}" ng-model="message.msg_text">
+    <button type="submit" class="pure-button pure-button-primary" ng-show="{{$index}} === issuesShow.editing" ng-click="issuesShow.EditMessage($index, message.id)">Update</button>
 
 
     <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.DeleteMessage(message.id)">Delete</button>

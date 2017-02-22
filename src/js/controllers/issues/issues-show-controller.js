@@ -50,8 +50,8 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
     }
   };
 
-  vm.ShowEditField = function() {
-    vm.editing ^= true;
+  vm.ShowEditField = function(id) {
+    vm.editing = id;
   };
 
   vm.EditMessage = function(index, messageID) {

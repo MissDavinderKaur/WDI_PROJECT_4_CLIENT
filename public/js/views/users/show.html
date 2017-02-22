@@ -7,7 +7,7 @@
 Issues
 <li ng-repeat="issue in main.user.issues track by $index"> <a ui-sref="issuesShow({id: issue.id})"> {{ issue.title }} </a>
 <ul>
-  <li ng-repeat="message in issue.messages track by $index" ng-if="$last"> Latest message: {{message.msg_text}}</li>
+  <li ng-repeat="message in issue.messages | orderBy: 'id'" ng-if="$last"> Latest message: {{ message.msg_text }}</li>
 </ul>
 </li>
 
