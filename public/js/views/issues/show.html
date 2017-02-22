@@ -1,5 +1,9 @@
 <h4>Issue show page </h4>
-
+<h4>
+  <span ng-show="issuesShow.status.connected">✓ Connected</span>
+  <span ng-show="issuesShow.status.disconnected">✘ Disconnected</span>
+  <span ng-show="issuesShow.status.connecting">✘ Connecting......</span>
+</h4>
 <h2>Issue</h2>
 {{issuesShow.issue.title}} <p ng-if="issuesShow.issue.active">(ACTIVE)</p>
 

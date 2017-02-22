@@ -2,9 +2,31 @@ angular
 .module('letsTalk')
 .controller('issuesShowCtrl', IssuesShowCtrl);
 
-IssuesShowCtrl.$inject = ['$stateParams', 'Issue', 'CurrentUserService', 'Message', '$state'];
-function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state) {
+IssuesShowCtrl.$inject = ['$stateParams', 'Issue', 'CurrentUserService', 'Message', '$state', 'ActionCableChannel', 'ActionCableSocketWrangler'];
+
+function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state, ActionCableChannel, ActionCableSocketWrangler) {
   const vm = this;
+
+  const consumer = new ActionCableChannel('IssuesChannel', { id: $stateParams.id });
+
+  function callback(message) {
+    console.log('RECEIVED', message)
+    vm.issue.messages.push({
+      msg_text: message
+    });
+  }
+
+  consumer.subscribe(callback).then(function(){
+    vm.sendMessage = function(message){
+      consumer.send(message, 'new_message');
+      // consumer.send(message);
+    };
+    // $scope.$on("$destroy", function(){
+    //   consumer.unsubscribe().then(function(){ $scope.sendToMyChannel = undefined; });
+    // });
+  });
+
+  vm.status = ActionCableSocketWrangler;
 
   vm.currentUser = CurrentUserService.currentUser;
   vm.newMessage = {};
@@ -32,18 +54,22 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
       .save(vm.newMessage)
       .$promise
       .then((response) => {
+        vm.sendMessage(vm.newMessage.msg_text);
         vm.newMessage.msg_text = null;
-        Issue
-        .get({id: response.issue_id})
-        .$promise
-        .then(response => {
-          vm.temp = response;
-          vm.temp.messages.sort(function(a, b){
-            return a.id-b.id;
-          });
-          vm.issue = vm.temp;
-          $state.go('issuesShow', {id: vm.issue.id});
-        });
+
+
+
+        // Issue
+        // .get({id: response.issue_id})
+        // .$promise
+        // .then(response => {
+        //   vm.temp = response;
+        //   vm.temp.messages.sort(function(a, b){
+        //     return a.id-b.id;
+        //   });
+        //   vm.issue = vm.temp;
+        //   $state.go('issuesShow', {id: vm.issue.id});
+        // });
       }, err => {
         console.log(err);
       });

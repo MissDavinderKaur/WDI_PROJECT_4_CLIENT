@@ -4,5 +4,6 @@ angular
 .module('letsTalk', [
   'ui.router',
   'ngResource',
-  'angular-jwt'
+  'angular-jwt',
+  'ngActionCable'
 ]);
