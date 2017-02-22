@@ -7,8 +7,8 @@
     </div>
 
     <div class="pure-control-group">
-      <label for="sector">Category</label>
-      <input id="sectory" type="text" placeholder="{{issuesEdit.issue.category}}" ng-model="issuesEdit.issue.category">
+      <label for="active">ACTIVE</label>
+      <select ng-model="issuesEdit.issue.active" ng-options="o.value as o.label for o in issuesEdit.options"></select>  
     </div>
     <button type="submit" class="pure-button pure-button-primary">Save Updates</button>
   </fieldset>

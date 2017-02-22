@@ -7,6 +7,12 @@ IssuesEditCtrl.$inject = ['$stateParams', '$state', '$http', 'Issue'];
 function IssuesEditCtrl($stateParams, $state, $http, Issue) {
   const vm = this;
 
+  vm.options = [
+    {value: '', label: 'Choose a value'},
+    {value: false, label: 'CLOSED'},
+    {value: true, label: 'ACTIVE'}
+  ];
+
   Issue
   .get({id: $stateParams.id})
   .$promise

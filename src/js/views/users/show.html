@@ -4,10 +4,10 @@
 <h3>Sector {{ main.user.sector }} </h3>
 <h3>City {{ main.user.city }} </h3>
 
-Issues
+ACTIVE Topics
 <li ng-if="main.user.issues.length === 0"> No topics to show </li>
 <li ng-repeat="issue in main.user.issues track by $index"> <a ui-sref="issuesShow({id: issue.id})">
-  {{ issue.title }} </a>
+  {{ issue.title }} </a> <p ng-if="issue.active">ACTIVE</p> <p ng-hide="issue.active">CLOSED</p>
 <ul>
   <li ng-if="issue.messages.length === 0"> No messages to show </li>
   <li ng-repeat="message in issue.messages | orderBy: 'id'" ng-if="$last"> Latest message: {{ message.msg_text }}</li>
