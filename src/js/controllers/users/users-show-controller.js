@@ -15,7 +15,18 @@ function UsersShowCtrl($stateParams, User, $scope, CurrentUserService) {
     .get({id: $stateParams.id})
     .$promise
     .then(response => {
-      vm.user = response;
+      vm.temp = response.user;
+      console.log('this is vm.temp', vm.temp);
+      vm.temp.issues.forEach(function(issue){
+        issue.messages.sort(function(a, b){
+          return a.id-b.id;
+        });
+      });
+      vm.temp.issues.sort(function(a, b){
+        return a.id-b.id;
+      });
+      vm.user = vm.temp;
+      console.log('THIS IS THE USER', vm.user);
     });
 
 }
