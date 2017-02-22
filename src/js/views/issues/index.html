@@ -1,3 +1,10 @@
 <h2>ISSUES INDEX</h2>
+<ul>
+  <li ng-repeat="issue in issuesIndex.issues"> {{issue.title}}
+    <p ng-hide="main.user.alias"> Log in or register to view this thread </p>
+    <ul ng-show="main.user.alias">
+      <li ng-repeat="message in issue.messages"> {{message.msg_text}}</li>
+    </ul>
+  </li>
 
-{{issuesIndex.issues}}
+</ul>

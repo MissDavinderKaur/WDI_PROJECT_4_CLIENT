@@ -13,6 +13,7 @@ angular
 issueFactory.$inject = ['API','$resource'];
 function issueFactory(API, $resource) {
   return $resource(`${API}/issues/:id`, { id: '@_id'}, {
+    'query': { method: 'GET', isArray: false},
     'update': { method: 'PUT'}
   });
 }
