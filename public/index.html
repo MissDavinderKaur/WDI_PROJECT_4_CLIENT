@@ -11,6 +11,22 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- endinject -->
   </head>
+  <nav>
+    <div class="pure-menu custom-restricted-width">
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref="home">HOME</a></li>
+          <li class="pure-menu-heading">User</li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref="usersRegister">Register</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref="usersLogin">Login</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref="usersShow({id: main.user.id})">Profile</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link" ng-click="main.logout()">Logout</a></li>
+
+          <li class="pure-menu-heading">Let's Talk</li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref="issuesIndex">See all topics</a></li>
+            <li class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref="issuesNew">Add a topic</a></li>
+        </ul>
+    </div>
+  </nav>
   <body ng-controller="MainCtrl as main">
     <main ui-view></main>
   </body>

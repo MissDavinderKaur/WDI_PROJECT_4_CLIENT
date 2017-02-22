@@ -9,10 +9,11 @@ function MainCtrl($rootScope, CurrentUserService, $state){
   $rootScope.$on('loggedIn', () => {
     //This is accessible from all HTML views
     vm.user = CurrentUserService.currentUser;
+    $state.go('usersShow', {id: vm.user.id});
   });
 
   vm.logout = () => {
-    CurrentUserService.removeFreelancer();
+    CurrentUserService.removeUser();
   };
 
   $rootScope.$on('loggedOut', () => {
