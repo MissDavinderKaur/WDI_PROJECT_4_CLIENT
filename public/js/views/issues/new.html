@@ -8,7 +8,9 @@
 
     <div class="pure-control-group">
       <label for="category">Category</label>
-      <input id="category" type="text" placeholder="Category" ng-model="issuesNew.issue.category">
+      <select name="categoriesList" ng-model="issuesNew.issue.category">
+        <option ng-repeat="category in issuesNew.categoriesList" value="{{category}}"> {{category}}</option>
+      </select>
       <span class="pure-form-message-inline">This is a required field.</span>
     </div>
     <div class="pure-controls">

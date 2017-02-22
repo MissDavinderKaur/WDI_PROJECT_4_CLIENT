@@ -2,11 +2,13 @@ angular
   .module('letsTalk')
   .controller('issuesNewCtrl', IssuesNewCtrl);
 
-IssuesNewCtrl.$inject = ['Issue', 'CurrentUserService', '$state'];
-function IssuesNewCtrl(Issue, CurrentUserService,$state) {
+IssuesNewCtrl.$inject = ['Issue', 'CurrentUserService', '$state', 'categoriesList'];
+function IssuesNewCtrl(Issue, CurrentUserService, $state, categoriesList) {
   const vm = this;
 
   vm.user = CurrentUserService.currentUser;
+
+  vm.categoriesList = categoriesList;
 
   vm.issueCreate = function() {
     vm.issue.user_id = vm.user.id;
