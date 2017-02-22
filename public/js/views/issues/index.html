@@ -1,6 +1,6 @@
 <h2>ISSUES INDEX</h2>
 <ul>
-  <li ng-repeat="issue in issuesIndex.issues | orderBy:'id'"> {{issue.title}}
+  <li ng-repeat="issue in issuesIndex.issues | orderBy:'id'"> <a ng-show="main.user.alias" ui-sref="issuesShow({id: issue.id})"> {{issue.title}} </a>
     <p ng-hide="main.user.alias"> <a ui-sref="usersLogin">Log in</a> or <a ui-sref="usersRegister">register</a> to view this thread </p>
     <ul ng-show="main.user.alias">
       <li ng-repeat="message in issue.messages | orderBy:'id'"> {{message.msg_text}}</li>

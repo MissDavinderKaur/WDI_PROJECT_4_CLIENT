@@ -15,11 +15,9 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
       msg_text: message
     });
   }
-
   consumer.subscribe(callback).then(function(){
     vm.sendMessage = function(message){
       consumer.send(message, 'new_message');
-      // consumer.send(message);
     };
     // $scope.$on("$destroy", function(){
     //   consumer.unsubscribe().then(function(){ $scope.sendToMyChannel = undefined; });
@@ -56,20 +54,8 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
       .then((response) => {
         vm.sendMessage(vm.newMessage.msg_text);
         vm.newMessage.msg_text = null;
+        console.log('THIS IS THE ISSUE AFTER SAVE', vm.issue);
 
-
-
-        // Issue
-        // .get({id: response.issue_id})
-        // .$promise
-        // .then(response => {
-        //   vm.temp = response;
-        //   vm.temp.messages.sort(function(a, b){
-        //     return a.id-b.id;
-        //   });
-        //   vm.issue = vm.temp;
-        //   $state.go('issuesShow', {id: vm.issue.id});
-        // });
       }, err => {
         console.log(err);
       });
