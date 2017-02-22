@@ -14,9 +14,9 @@ function UsersNewCtrl(User, CurrentUserService,$state) {
     User
     .register(vm.user)
     .$promise
-    .then(() => {
+    .then((response) => {
+      vm.user = response.user
       CurrentUserService.getUser();
-      vm.user = CurrentUserService.currentUser;
       $state.go('usersShow', {id: vm.user.id});
     }, err => {
       console.log(err);
