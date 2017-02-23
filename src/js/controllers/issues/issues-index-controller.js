@@ -35,7 +35,6 @@ function IssuesIndexCtrl(Issue, citiesList, categoriesList, sectorsList) {
       .then(response => {
         const allIssues  = response.issues;
         allIssues.forEach(function(issue) {
-          console.log('THE ISSUE', issue);
           if(issue.categoryy === vm.searchCriteriaCategory){
             vm.filteredIssues.push(issue);
           }
