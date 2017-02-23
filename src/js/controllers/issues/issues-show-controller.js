@@ -15,7 +15,16 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
     vm.issue.messages.push({
       msg_text: message
     });
-    // vm.issue.messages.push(vm.newMessage);
+    Issue
+    .get({id: $stateParams.id})
+    .$promise
+    .then(response => {
+      vm.temp = response;
+      vm.temp.messages.sort(function(a, b){
+        return a.id-b.id;
+      });
+      vm.issue = vm.temp;
+    });
   }
   consumer.subscribe(callback).then(function(){
     vm.sendMessage = function(message){

@@ -10,33 +10,33 @@
   </div>
 
   <div class="pure-u-1-4">
-    <p class="statusText" ng-show="issuesShow.issue.active"> (CLOSED)</p>
+    <p class="statusText" ng-hide="issuesShow.issue.active"> (CLOSED)</p>
   </div>
 
   <div class="pure-u-1-4">
-    <a ui-sref="issuesEdit({id: issuesShow.issue.id})">Edit Issue</a>
+    <a ng-if="issuesShow.currentUser.id === issuesShow.issue.user_id" ui-sref="issuesEdit({id: issuesShow.issue.id})">Edit Issue</a>
   </div>
 </div>
 
 
 <h2>Messages</h2>
-<!-- {{issuesShow.issue}} -->
 <p ng-if="issuesShow.issue.messages.length === 0"> No messages to show </p>
 <ul>
   <li ng-repeat="message in issuesShow.issue.messages | orderBy:'id'"> {{ message.sender.alias }} : {{ message.msg_text}}
-    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.ShowEditField($index)">Edit</button>
+
+    <button type="submit" class="pure-button pure-button-primary additionalOptions" ng-if="issuesShow.currentUser.id === message.sender_id" ng-click="issuesShow.ShowEditField($index)">Edit</button>
 
     <input id="{{$index}}" type="text" ng-show="{{$index}} === issuesShow.editing" placeholder="{{ message.msg_text}}" ng-model="message.msg_text">
-    <button type="submit" class="pure-button pure-button-primary" ng-show="{{$index}} === issuesShow.editing" ng-click="issuesShow.EditMessage($index, message.id)">Update</button>
+    <button type="submit" class="pure-button pure-button-primary additionalOptions" ng-show="{{$index}} === issuesShow.editing" ng-click="issuesShow.EditMessage($index, message.id)">Update</button>
 
 
-    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.DeleteMessage(message.id)">Delete</button>
+    <button type="submit" class="pure-button pure-button-primary additionalOptions" ng-if="issuesShow.currentUser.id === message.sender_id" ng-click="issuesShow.DeleteMessage(message.id)">Delete</button>
   </li>
 </ul>
 
-<div class="pure-control-group">
+<div class="pure-form pure-control-group">
   {{ issuesShow.message }}
   <label for="new_message">Add new message</label>
-  <input id="new_message" type="text" placeholder="New Message" ng-model="issuesShow.newMessage.msg_text">
-  <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.AddMessage()">Add</button>
+  <input class="pure-input-1" id="new_message" type="text" placeholder="New Message" ng-model="issuesShow.newMessage.msg_text">
+  <button type="submit" class="pure-button pure-button-primary addButton" ng-click="issuesShow.AddMessage()">Add</button>
 </div>
