@@ -1,15 +1,13 @@
-<h3>ISSUE EDIT PAGE</h3>
 <form class="pure-form pure-form-aligned" ng-submit="issuesEdit.issuesUpdate()">
   <fieldset>
     <div class="pure-control-group">
-      <label for="city">Title</label>
-      <input id="city" type="text" placeholder="{{issuesEdit.issue.title}}" ng-model="issuesEdit.issue.title">
+      <label for="active">Status</label>
+      <select ng-model="issuesEdit.issue.active" ng-options="o.value as o.label for o in issuesEdit.options"></select>
     </div>
-
     <div class="pure-control-group">
-      <label for="active">ACTIVE</label>
-      <select ng-model="issuesEdit.issue.active" ng-options="o.value as o.label for o in issuesEdit.options"></select>  
+      <label for="city">Description</label>
+      <textarea id="city" class="pure-input-2-3" type="text" placeholder="{{issuesEdit.issue.title}}" ng-model="issuesEdit.issue.title"> </textarea>
     </div>
-    <button type="submit" class="pure-button pure-button-primary">Save Updates</button>
+    <button type="submit" class="pure-button pure-button-primary updateButton">Save Updates</button>
   </fieldset>
 </form>
