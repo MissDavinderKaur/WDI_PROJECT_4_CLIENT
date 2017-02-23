@@ -1,47 +1,41 @@
 <form class="pure-form pure-form-aligned" ng-submit="usersNew.userCreate()">
   <fieldset>
-    <div class="pure-control-group">
-      <label for="alias">Alias</label>
-      <input id="alias" type="text" placeholder="Alias" ng-model="usersNew.user.alias">
-      <span class="pure-form-message-inline">This is a required field.</span>
-    </div>
+      <div class="pure-control-group">
+        <label for="alias">Alias *</label>
+        <input id="alias" type="text" placeholder="Alias" ng-model="usersNew.user.alias" required>
+      </div>
 
-    <div class="pure-control-group">
-      <label for="email">Email</label>
-      <input id="email" type="text" placeholder="Email" ng-model="usersNew.user.email">
-      <span class="pure-form-message-inline">This is a required field.</span>
-    </div>
+      <div class="pure-control-group">
+        <label for="email">Email *</label>
+        <input id="email" type="text" placeholder="Email" ng-model="usersNew.user.email" required>
+      </div>
 
-    <div class="pure-control-group">
-      <label for="password">Password</label>
-      <input id="password" type="password" placeholder="Password" ng-model="usersNew.user.password">
-      <span class="pure-form-message-inline">This is a required field.</span>
-    </div>
+      <div class="pure-control-group">
+        <label for="password">Password *</label>
+        <input id="password" type="password" placeholder="Password" ng-model="usersNew.user.password" required>
+      </div>
 
-    <div class="pure-control-group">
-      <label for="password_confirmation">Password Confirmation</label>
-      <input id="password_confirmation" type="password" placeholder="Password" ng-model="usersNew.user.password_confirmation">
-      <span class="pure-form-message-inline">This is a required field.</span>
-    </div>
+      <div class="pure-control-group">
+        <label for="password_confirmation">Password Confirmation *</label>
+        <input id="password_confirmation" type="password" placeholder="Password" ng-model="usersNew.user.password_confirmation" required>
+      </div>
 
-    <div class="pure-control-group">
-      <label for="city">City</label>
-      <select name="city" ng-model="usersNew.user.city">
-        <option ng-repeat="city in usersNew.citiesList" value="{{city}}"> {{city}}</option>
-      </select>
-      <span class="pure-form-message-inline">This is a required field.</span>
-    </div>
+      <div class="pure-control-group">
+        <label for="city">City *</label>
+        <select name="city" ng-model="usersNew.user.city" required>
+          <option ng-repeat="city in usersNew.citiesList" value="{{city}}"> {{city}}</option>
+        </select>
+      </div>
 
-    <div class="pure-control-group">
-      <label for="sector">Sector</label>
-      <select name="Sector" ng-model="usersNew.user.sector">
-        <option ng-repeat="sector in usersNew.sectorsList" value="{{sector}}">{{sector}}</option>
-      </select>
-      <span class="pure-form-message-inline">This is a required field.</span>
-    </div>
+      <div class="pure-control-group">
+        <label for="sector">Sector *</label>
+        <select name="Sector" ng-model="usersNew.user.sector" required>
+          <option ng-repeat="sector in usersNew.sectorsList" value="{{sector}}">{{sector}}</option>
+        </select>
+      </div>
 
-    <div class="pure-controls">
-      <button type="submit" class="pure-button pure-button-primary">Submit</button>
-    </div>
+      <div class="pure-controls">
+        <button type="submit" class="pure-button pure-button-primary">Submit</button>
+      </div>
   </fieldset>
 </form>
