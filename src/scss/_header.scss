@@ -23,6 +23,8 @@
   font-family: 'Josefin Sans', sans-serif;
 }
 
-label {
-  font-family: 'Josefin Sans', sans-serif;
-}
+html, button, input, select, , label, textarea,
+    .pure-g [class *= "pure-u"] {
+        /* Set your content font stack here: */
+        font-family: 'Josefin Sans', sans-serif;
+    }

@@ -2,7 +2,7 @@
 <html ng-app="letsTalk">
 <head>
   <meta charset="utf-8">
-  <title>Angular Stack Setup</title>
+  <title>Let's Talk</title>
   <link rel="icon" href="/images/letstalk.jpg">
   <link href="https://fonts.googleapis.com/css?family=Amiko:400,600,700|Baloo|Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
   <meta name="action-cable-url" content="ws://localhost:3000/cable"/>
@@ -27,7 +27,7 @@
       <ul class="pure-menu-list">
         <a class="pure-menu-heading" ui-sref="home">Home</a>
       </ul>
-      <a class="pure-menu-heading" ui-sref="home">User</a>
+      <a class="pure-menu-heading">User</a>
       <ul class="pure-menu-list">
         <li class="pure-menu-item"><a href="#" class="pure-menu-link" ng-hide="main.user.alias" ui-sref="usersRegister">Register</a></li>
 
@@ -37,7 +37,7 @@
 
         <li class="pure-menu-item"><a href="#" class="pure-menu-link" ng-show="main.user.alias" ng-click="main.logout()">Logout</a></li>
       </ul>
-      <a class="pure-menu-heading" ui-sref="home">Let's Talk</a>
+      <a class="pure-menu-heading">Let's Talk</a>
       <ul class="pure-menu-list">
         <li class="pure-menu-item"><a href="#" class="pure-menu-link" ui-sref="issuesNew" ng-show="main.user.alias">Add a Topic</a></li>
 
@@ -48,7 +48,7 @@
 
   <div id="main">
     <div class="header">
-      <h1 class="logo">Lets Talk</h1>
+      <h1 class="logo">Let's Talk</h1>
       <h2 class="strapline">Help a friend in need</h2>
     </div>
     <div class="content">
