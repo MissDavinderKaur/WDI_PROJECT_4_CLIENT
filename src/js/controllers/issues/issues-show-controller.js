@@ -6,14 +6,27 @@ IssuesShowCtrl.$inject = ['$stateParams', 'Issue', 'CurrentUserService', 'Messag
 
 function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state, ActionCableChannel, ActionCableSocketWrangler) {
   const vm = this;
+
+  vm.currentUser = CurrentUserService.currentUser;
   vm.newMessage = {};
 
   const consumer = new ActionCableChannel('IssuesChannel', { id: $stateParams.id });
+  function callback(message) {
+    console.log('RECEIVED', message)
+    vm.issue.messages.push({
+      msg_text: message
+    });
+  }
+  consumer.subscribe(callback).then(function(){
+    vm.sendMessage = function(message){
+      consumer.send(message, 'new_message');
+    };
+    // $scope.$on("$destroy", function(){
+    //   consumer.unsubscribe().then(function(){ $scope.sendToMyChannel = undefined; });
+    // });
+  });
   vm.status = ActionCableSocketWrangler;
 
-  vm.currentUser = CurrentUserService.currentUser;
-
-  console.log('THE CURRENT USER IS', vm.currentUser);
 
   Issue
   .get({id: $stateParams.id})
@@ -30,32 +43,33 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
     if (vm.newMessage.msg_text === undefined) {
       //do nothing, as no text has been entered
     } else {
-      vm.sendMessage(vm.newMessage.msg_text);
+      vm.newMessage.issue_id = vm.issue.id;
+      vm.newMessage.sender_id = vm.currentUser.id;
+      vm.newMessage.receiver_id = vm.issue.user.id;
+
+      Message
+      .save(vm.newMessage)
+      .$promise
+      .then((response) => {
+        console.log('THIS IS THE RESPONSE FROM THE MESSAGE SAVE', response);
+        vm.sendMessage(vm.newMessage.msg_text);
+        vm.newMessage.msg_text = null;
+        // Issue
+        // .get({id: response.issue_id})
+        // .$promise
+        // .then(response => {
+        //   vm.temp = response;
+        //   vm.temp.messages.sort(function(a, b){
+        //     return a.id-b.id;
+        //   });
+        //   vm.issue = vm.temp;
+        //   $state.go('issuesShow', {id: vm.issue.id});
+        // });
+      }, err => {
+        console.log(err);
+      });
     }
   };
-
-  consumer.subscribe(SaveMessage).then(function() {
-    vm.sendMessage = function(message){
-      consumer.send(message, 'new_message');
-      vm.newMessage.msg_text = null;
-    };
-    // $scope.$on("$destroy", function(){
-    //   consumer.unsubscribe().then(function(){ $scope.sendToMyChannel = undefined; });
-    // });
-  });
-
-  function SaveMessage(message) {
-    vm.newMessage.issue_id = vm.issue.id;
-    vm.newMessage.sender_id = vm.currentUser.id;
-    vm.newMessage.receiver_id = vm.issue.user.id;
-    vm.newMessage.msg_text = message;
-
-    Message
-    .save(vm.newMessage).$promise.then((response) => {
-      vm.newMessage = {};
-      console.log('LOGGING RESPONSE', response);
-    });
-  }
 
   vm.ShowEditField = function(id) {
     vm.editing = id;
@@ -100,5 +114,4 @@ function IssuesShowCtrl($stateParams, Issue, CurrentUserService, Message, $state
       console.log(err);
     });
   };
-
 }
