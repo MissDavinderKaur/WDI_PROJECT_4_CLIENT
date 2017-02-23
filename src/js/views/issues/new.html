@@ -1,20 +1,18 @@
 <form class="pure-form pure-form-aligned" ng-submit="issuesNew.issueCreate()">
   <fieldset>
     <div class="pure-control-group">
-      <label for="title">Title</label>
-      <input id="title" type="text" placeholder="Title" ng-model="issuesNew.issue.title">
-      <span class="pure-form-message-inline">This is a required field.</span>
+      <label for="category">Category</label>
+      <select name="categoriesList" ng-model="issuesNew.issue.category" required>
+        <option ng-repeat="category in issuesNew.categoriesList" value="{{category}}"> {{category}}</option>
+      </select>
     </div>
 
     <div class="pure-control-group">
-      <label for="category">Category</label>
-      <select name="categoriesList" ng-model="issuesNew.issue.category">
-        <option ng-repeat="category in issuesNew.categoriesList" value="{{category}}"> {{category}}</option>
-      </select>
-      <span class="pure-form-message-inline">This is a required field.</span>
+      <label for="title">Description</label>
+      <textarea id="title" class="pure-input-2-3" placeholder="Description" ng-model="issuesNew.issue.title"> </textarea>
     </div>
     <div class="pure-controls">
-      <button type="submit" class="pure-button pure-button-primary">Submit</button>
+      <button type="submit" class="pure-button pure-button-primary submitButton">Submit</button>
     </div>
   </fieldset>
 </form>
