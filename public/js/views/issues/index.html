@@ -1,6 +1,48 @@
 <h2>ISSUES INDEX</h2>
+
+<div>
+  <h3>Search by Category</h3>
+  <div>
+    <select ng-model="issuesIndex.searchCriteriaCategory">
+      <option value="All">All</option>
+      <option ng-repeat="category in issuesIndex.categoriesList" value="{{category}}">{{category}}</option>
+    </select>
+  </div>
+  <div>
+    <button ng-click="issuesIndex.searchByCategory()">Search By Category</button>
+  </div>
+</div>
+
+<div>
+  <h3>Search by Sector</h3>
+  <div>
+    <select ng-model="issuesIndex.searchCriteriaSector">
+      <option value="All">All</option>
+      <option ng-repeat="sector in issuesIndex.sectorsList" value="{{sector}}">{{sector}}</option>
+    </select>
+  </div>
+  <div>
+    <button ng-click="issuesIndex.searchBySector()">Search By Sector</button>
+  </div>
+</div>
+
+<div>
+  <h3>Search by City</h3>
+  <div>
+    <select ng-model="issuesIndex.searchCriteriaCity">
+      <option value="All">All</option>
+      <option ng-repeat="city in issuesIndex.citiesList" value="{{city}}">{{city}}</option>
+    </select>
+  </div>
+  <div>
+    <button ng-click="issuesIndex.searchByCity()">Search By City</button>
+  </div>
+</div>
+
+
+
 <ul>
-  <li ng-repeat="issue in issuesIndex.issues | orderBy:'id'"> <a ng-show="main.user.alias" ui-sref="issuesShow({id: issue.id})"> {{issue.title}} </a>
+  <li ng-repeat="issue in issuesIndex.issues | orderBy:'id'"> {{issue.title}} <a ng-show="main.user.alias" ui-sref="issuesShow({id: issue.id})"> View </a>
     <p ng-hide="main.user.alias"> <a ui-sref="usersLogin">Log in</a> or <a ui-sref="usersRegister">register</a> to view this thread </p>
     <ul ng-show="main.user.alias">
       <li ng-repeat="message in issue.messages | orderBy:'id'"> {{message.msg_text}}</li>
