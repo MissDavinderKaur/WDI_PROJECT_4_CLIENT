@@ -12,7 +12,6 @@
   </div>
 </div>
 
-<!-- {{main.user.issues[0].messages[1]}} -->
 <h3>My Topics</h3>
 <p ng-if="main.user.issues.length === 0"> No topics to show </p>
 <table class="pure-table pure-table-horizontal">
@@ -27,7 +26,7 @@
     <tr ng-repeat="issue in main.user.issues | orderBy:'id'">
       <td> <a ui-sref="issuesShow({id: issue.id})"> {{issue.title}} </a>  </td>
       <td><p ng-show="issue.active">Active</p> <p ng-hide="issue.active">CLOSED</p></td>
-      <td><p ng-repeat="message in issue.messages | orderBy: 'id'" ng-if="$last"> {{ message.msg_text }}</p></td>
+      <td><p ng-repeat="message in issue.messages | orderBy: 'id'" ng-if="$last"> {{issue.last_sender.alias}} {{ message.msg_text }}</p></td>
     </tr>
   </tbody>
 </table>

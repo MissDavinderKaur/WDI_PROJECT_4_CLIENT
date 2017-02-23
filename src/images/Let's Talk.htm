@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://localhost:7000/issues/135 -->
+<html ng-app="letsTalk" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+  
+  <title>Let's Talk</title>
+  <link rel="icon" href="http://localhost:7000/images/letstalk.jpg">
+  <link href="./Let&#39;s Talk_files/css" rel="stylesheet">
+  <meta name="action-cable-url" content="ws://localhost:3000/cable">
+  <!--<base href="/">--><base href=".">
+  <!-- inject:js -->
+  <script src="./Let&#39;s Talk_files/app.js"></script>
+  <!-- endinject -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="./Let&#39;s Talk_files/style.css">
+  <!-- endinject -->
+</head>
+
+<body ng-controller="MainCtrl as main" class="ng-scope"><script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.18.8'><\/script>".replace("HOST", location.hostname));
+//]]></script><script async="" src="./Let&#39;s Talk_files/browser-sync-client.js"></script>
+
+  <!-- Menu toggle -->
+  <a href="http://localhost:7000/#menu" id="menuLink" class="menu-link">
+    <!-- Hamburger icon -->
+    <span></span>
+  </a>
+
+  <div id="menu">
+    <div class="pure-menu">
+      <ul class="pure-menu-list">
+        <a class="pure-menu-heading" ui-sref="home" href="http://localhost:7000/">Home</a>
+      </ul>
+      <a class="pure-menu-heading">User</a>
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="http://localhost:7000/register" class="pure-menu-link ng-hide" ng-hide="main.user.alias" ui-sref="usersRegister">Register</a></li>
+
+        <li class="pure-menu-item"><a href="http://localhost:7000/login" class="pure-menu-link ng-hide" ng-hide="main.user.alias" ui-sref="usersLogin">Login</a></li>
+
+        <li class="pure-menu-item"><a href="http://localhost:7000/users/145" class="pure-menu-link" ng-show="main.user.alias" ui-sref="usersShow({id: main.user.id})">Profile</a></li>
+
+        <li class="pure-menu-item"><a href="http://localhost:7000/#" class="pure-menu-link" ng-show="main.user.alias" ng-click="main.logout()">Logout</a></li>
+      </ul>
+      <a class="pure-menu-heading">Let's Talk</a>
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="http://localhost:7000/issues/new" class="pure-menu-link" ui-sref="issuesNew" ng-show="main.user.alias">Add a Topic</a></li>
+
+        <li class="pure-menu-item"><a href="http://localhost:7000/issues" class="pure-menu-link" ui-sref="issuesIndex">See all topics</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="main">
+    <div class="header">
+      <h1 class="logo">Let's Talk</h1>
+      <h2 class="strapline">Help a friend in need</h2>
+    </div>
+    <div class="content">
+      <!-- uiView: --><main ui-view="" class="ng-scope"><div class="pure-g ng-scope">
+  <div class="pure-u-1-4">
+    <h3 class="ng-binding">My super serious sexism issue </h3>
+  </div>
+
+  <div class="pure-u-1-4">
+    <div class="status connected" ng-show="issuesShow.status.connected">✓ Connected</div>
+    <div class="status disconnected ng-hide" ng-show="issuesShow.status.disconnected">✘ Disconnected</div>
+    <div class="status connecting ng-hide" ng-show="issuesShow.status.connecting">✘ Connecting......</div>
+  </div>
+
+  <div class="pure-u-1-4">
+    <p class="statusText" ng-show="issuesShow.issue.active"> (CLOSED)</p>
+  </div>
+
+  <div class="pure-u-1-4">
+    <a ui-sref="issuesEdit({id: issuesShow.issue.id})" href="http://localhost:7000/issues/135/edit">Edit Issue</a>
+  </div>
+</div>
+
+
+<h2 class="ng-scope">Messages</h2>
+<!-- {{issuesShow.issue}} -->
+<!-- ngIf: issuesShow.issue.messages.length === 0 -->
+<ul class="ng-scope">
+  <!-- ngRepeat: message in issuesShow.issue.messages | orderBy:'id' --><li ng-repeat="message in issuesShow.issue.messages | orderBy:&#39;id&#39;" class="ng-binding ng-scope"> MissDavinderKaur : Thank you for the advice
+    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.ShowEditField($index)">Edit</button>
+
+    <input id="0" type="text" ng-show="0 === issuesShow.editing" placeholder="Thank you for the advice" ng-model="message.msg_text" class="ng-pristine ng-untouched ng-valid ng-not-empty ng-hide">
+    <button type="submit" class="pure-button pure-button-primary ng-hide" ng-show="0 === issuesShow.editing" ng-click="issuesShow.EditMessage($index, message.id)">Update</button>
+
+
+    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.DeleteMessage(message.id)">Delete</button>
+  </li><!-- end ngRepeat: message in issuesShow.issue.messages | orderBy:'id' --><li ng-repeat="message in issuesShow.issue.messages | orderBy:&#39;id&#39;" class="ng-binding ng-scope"> MissDavinderKaur : hello
+    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.ShowEditField($index)">Edit</button>
+
+    <input id="1" type="text" ng-show="1 === issuesShow.editing" placeholder="hello" ng-model="message.msg_text" class="ng-pristine ng-untouched ng-valid ng-not-empty ng-hide">
+    <button type="submit" class="pure-button pure-button-primary ng-hide" ng-show="1 === issuesShow.editing" ng-click="issuesShow.EditMessage($index, message.id)">Update</button>
+
+
+    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.DeleteMessage(message.id)">Delete</button>
+  </li><!-- end ngRepeat: message in issuesShow.issue.messages | orderBy:'id' --><li ng-repeat="message in issuesShow.issue.messages | orderBy:&#39;id&#39;" class="ng-binding ng-scope"> MissDavinderKaur : how are you?
+    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.ShowEditField($index)">Edit</button>
+
+    <input id="2" type="text" ng-show="2 === issuesShow.editing" placeholder="how are you?" ng-model="message.msg_text" class="ng-pristine ng-untouched ng-valid ng-not-empty ng-hide">
+    <button type="submit" class="pure-button pure-button-primary ng-hide" ng-show="2 === issuesShow.editing" ng-click="issuesShow.EditMessage($index, message.id)">Update</button>
+
+
+    <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.DeleteMessage(message.id)">Delete</button>
+  </li><!-- end ngRepeat: message in issuesShow.issue.messages | orderBy:'id' -->
+</ul>
+
+<div class="pure-control-group ng-binding ng-scope">
+  
+  <label for="new_message">Add new message</label>
+  <input id="new_message" type="text" placeholder="New Message" ng-model="issuesShow.newMessage.msg_text" class="ng-pristine ng-untouched ng-valid ng-empty">
+  <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.AddMessage()">Add</button>
+</div>
+</main>
+    </div>
+  </div>
+
+
+
+
+
+
+<div style="display: block;"></div></body></html>

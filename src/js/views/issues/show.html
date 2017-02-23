@@ -1,13 +1,26 @@
-<h4>Issue show page </h4>
-<h4>
-  <span ng-show="issuesShow.status.connected">✓ Connected</span>
-  <span ng-show="issuesShow.status.disconnected">✘ Disconnected</span>
-  <span ng-show="issuesShow.status.connecting">✘ Connecting......</span>
-</h4>
-<h2>Issue</h2>
-{{issuesShow.issue.title}} <p ng-if="issuesShow.issue.active">(ACTIVE)</p>
-<a ui-sref="issuesEdit({id: issuesShow.issue.id})">Edit this Title</a>
+<div class="pure-g">
+  <div class="pure-u-1-4">
+    <h3>{{issuesShow.issue.title}} </h3>
+  </div>
+
+  <div class="pure-u-1-4">
+    <div class="status connected" ng-show="issuesShow.status.connected">✓ Connected</div>
+    <div class="status disconnected" ng-show="issuesShow.status.disconnected">✘ Disconnected</div>
+    <div class="status connecting" ng-show="issuesShow.status.connecting">✘ Connecting......</div>
+  </div>
+
+  <div class="pure-u-1-4">
+    <p class="statusText" ng-show="issuesShow.issue.active"> (CLOSED)</p>
+  </div>
+
+  <div class="pure-u-1-4">
+    <a ui-sref="issuesEdit({id: issuesShow.issue.id})">Edit Issue</a>
+  </div>
+</div>
+
+
 <h2>Messages</h2>
+<!-- {{issuesShow.issue}} -->
 <p ng-if="issuesShow.issue.messages.length === 0"> No messages to show </p>
 <ul>
   <li ng-repeat="message in issuesShow.issue.messages | orderBy:'id'"> {{ message.sender.alias }} : {{ message.msg_text}}

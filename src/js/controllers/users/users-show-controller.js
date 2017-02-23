@@ -12,21 +12,10 @@ function UsersShowCtrl($stateParams, User, $scope, CurrentUserService) {
   }
 
   User
-    .get({id: $stateParams.id})
-    .$promise
-    .then(response => {
-      vm.user = response.user;
-      console.log('THIS IS THE CURRENT USER', vm.user);
-      // var temp = response.user;
-      // temp.issues.forEach(function(issue){
-      //   issue.messages.sort(function(a, b){
-      //     return a.id-b.id;
-      //   });
-      // });
-      // temp.issues.sort(function(a, b){
-      //   return a.id-b.id;
-      // });
-      // vm.user = vm.temp;
-    });
+  .get({id: $stateParams.id})
+  .$promise
+  .then(response => {
+    vm.user = response.user;
+  });
 
 }
