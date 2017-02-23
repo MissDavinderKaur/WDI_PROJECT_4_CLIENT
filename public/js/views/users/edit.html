@@ -1,21 +1,19 @@
-<h3>EDIT PAGE</h3>
+<h3>{{ main.user.alias }}</h3>
 <form class="pure-form pure-form-aligned" ng-submit="usersEdit.usersUpdate()">
   <fieldset>
     <div class="pure-control-group">
       <label for="city">City</label>
-      <select name="city" ng-model="usersEdit.user.city" placeholder="{{main.user.city}}">
+      <select name="city" ng-model="usersEdit.user.city" placeholder="{{main.user.city}}" required>
         <option ng-repeat="city in usersEdit.citiesList" value="{{city}}"> {{city}}</option>
       </select>
-      <span class="pure-form-message-inline">This is a required field.</span>
     </div>
 
     <div class="pure-control-group">
       <label for="sector">Sector</label>
-      <select name="Sector" ng-model="usersEdit.user.sector" placeholder="{{main.user.sector}}">
+      <select name="Sector" ng-model="usersEdit.user.sector" placeholder="{{main.user.sector}}" required="">
         <option ng-repeat="sector in usersEdit.sectorsList" value="{{sector}}">{{sector}}</option>
       </select>
-      <span class="pure-form-message-inline">This is a required field.</span>
     </div>
-    <button type="submit" class="pure-button pure-button-primary">Save Updates</button>
+    <button type="submit" class="pure-button pure-button-primary saveUpdates">Save Updates</button>
   </fieldset>
 </form>
