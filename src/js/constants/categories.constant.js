@@ -2,8 +2,11 @@ angular
   .module('letsTalk')
   .constant('categoriesList', [
     'Ageism',
+    'Disability',
+    'Gender',
+    'Racism',
     'Sexism',
-    'Racism'
+    'Sexual Orientation'
   ]);
 
 //array of our app's roles for use in a few places in front end

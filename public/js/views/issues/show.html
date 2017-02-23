@@ -6,14 +6,11 @@
 </h4>
 <h2>Issue</h2>
 {{issuesShow.issue.title}} <p ng-if="issuesShow.issue.active">(ACTIVE)</p>
-
-
-
-<a ui-sref="issuesEdit({id: issuesShow.issue.id})">Edit this message</a>
+<a ui-sref="issuesEdit({id: issuesShow.issue.id})">Edit this Title</a>
 <h2>Messages</h2>
 <p ng-if="issuesShow.issue.messages.length === 0"> No messages to show </p>
 <ul>
-  <li ng-repeat="message in issuesShow.issue.messages | orderBy:'id'"> {{ message.msg_text}}
+  <li ng-repeat="message in issuesShow.issue.messages | orderBy:'id'"> {{ message.sender.alias }} : {{ message.msg_text}}
     <button type="submit" class="pure-button pure-button-primary" ng-click="issuesShow.ShowEditField($index)">Edit</button>
 
     <input id="{{$index}}" type="text" ng-show="{{$index}} === issuesShow.editing" placeholder="{{ message.msg_text}}" ng-model="message.msg_text">
