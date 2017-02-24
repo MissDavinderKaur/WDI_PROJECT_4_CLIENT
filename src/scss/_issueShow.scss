@@ -10,17 +10,30 @@
 }
 
 .connected {
-  background: green;
+  background: #008F95;
   margin-top: 20px;
 }
 
-.connecting { background: yellow; }
+.connecting { background: #E9B000; }
 
 .disconnected {
-  background: red;
+  background: #E24E42;
   margin-bottom: 20px;
 }
+.msgContainer{
+  border: 1px solid #DFDCE3;
+  width: 80%;
+  margin: 0 auto;
+}
 
+p.mine {
+  text-align: right;
+  padding: 0px;
+}
+
+p.others{
+  text-align: left;
+}
 .additionalOptions {
   padding: 5px;
   margin-top: 0px;

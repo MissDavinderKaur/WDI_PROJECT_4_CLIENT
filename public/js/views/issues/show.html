@@ -21,8 +21,8 @@
 
 <h2>Messages</h2>
 <p ng-if="issuesShow.issue.messages.length === 0"> No messages to show </p>
-<ul>
-  <li ng-repeat="message in issuesShow.issue.messages | orderBy:'id'"> {{ message.sender.alias }} : {{ message.msg_text}}
+<div class="msgContainer">
+  <p ng-repeat="message in issuesShow.issue.messages | orderBy:'id'" ng-class="(issuesShow.currentUser.id === message.sender_id) ? 'mine' : 'others'"> {{ message.sender.alias }} : {{ message.msg_text}}
 
     <button type="submit" class="pure-button pure-button-primary additionalOptions" ng-if="issuesShow.currentUser.id === message.sender_id" ng-click="issuesShow.ShowEditField($index)">Edit</button>
 
@@ -31,8 +31,9 @@
 
 
     <button type="submit" class="pure-button pure-button-primary additionalOptions" ng-if="issuesShow.currentUser.id === message.sender_id" ng-click="issuesShow.DeleteMessage(message.id)">Delete</button>
-  </li>
-</ul>
+  </p>
+</div>
+
 
 <div class="pure-form pure-control-group">
   {{ issuesShow.message }}
