@@ -6,7 +6,8 @@ angular
     'Gender',
     'Racism',
     'Sexism',
-    'Sexual Orientation'
+    'Sexual Orientation',
+    'Other'
   ]);
 
 //array of our app's roles for use in a few places in front end

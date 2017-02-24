@@ -12,6 +12,7 @@ function IssuesNewCtrl(Issue, CurrentUserService, $state, categoriesList) {
 
   vm.issueCreate = function() {
     vm.issue.user_id = vm.user.id;
+    vm.issue.active = true;
 
     Issue
     .save(vm.issue)
