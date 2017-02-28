@@ -1,5 +1,5 @@
 angular
 .module('letsTalk')
-.constant('API', 'http://localhost:3000');
+.constant('API', 'https://lets-talk-api.herokuapp.com/');
 
 //allows API to be referenced throughout app
